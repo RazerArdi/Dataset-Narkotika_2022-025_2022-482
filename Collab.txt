@@ -1,0 +1,3 @@
+Preprocessing dan indexing adalah salah satu tahapan yang dilakukan dalam Temu Kembali Informasi (TKI). Pada penugasan ini, lakukan preprocessing dan pengindeksan terhadap dokumen putusan pengadilan.
+
+Link : 
