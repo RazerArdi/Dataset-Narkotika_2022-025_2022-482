@@ -24,11 +24,11 @@
 
 ### 📊 **Spesifikasi Dataset**
 - **🏛️ Sumber**: Direktori Putusan MA RI
-- **⚖️ Domain**: Hukum Pidana Khusus  
+- **⚖️ Domain**: Hukum Pidana Khusus  
 - **🎯 Fokus**: Narkotika & Psikotropika
 - **📄 Total**: 50 Dokumen Putusan
-- **🏢 Lembaga**: Pengadilan Negeri Kendal
-- **📅 Rentang**: 2023 – 2025
+- **🏢 Lembaga**: Pengadilan Negeri Tegal
+- **📅 Rentang**: 2023 - 2025
 
 </td>
 <td width="50%">
@@ -50,21 +50,13 @@
 ```
 📦 Dataset-Narkotika_025_482
 ├── 📂 Data/
-│   └── 🗜️ (Berisi 50 dokumen putusan .pdf dalam folder tahun)
+│   └── 🗜️ Narkotika.zip      # Arsip berisi 50 dokumen putusan (.pdf)
 │
 ├── 📂 Overview/
 │   └── 📊 Overview.xlsx      # Metadata & ringkasan putusan
 │
-├── 📂 Preprocessing_Results/
-│   └── 📄 (Hasil teks bersih per dokumen, dibuat oleh skrip)
-│
-├── 📄 .gitignore
-├── 📄 Collab.txt            # Kode Preprocessing versi Google Colab
 ├── 📄 LICENSE
-├── 📄 Preprocessing.py       # Skrip untuk membersihkan dan mengindeks data
-├── 📄 README.md              # Dokumentasi lengkap
-└── 📄 Scrapping.py           # Skrip untuk akuisisi data
-└── 📄 Create_Overview.py     # Skrip untuk scv
+└── 📄 README.md              # Dokumentasi lengkap
 ```
 
 <div align="center">
@@ -76,16 +68,14 @@ graph TD
     A[📚 Direktori Putusan MA RI] --> B[🔍 Seleksi Manual Berbasis Kriteria];
     B --> C{Spesifikasi};
     C --> D[⚖️ Narkotika & Psikotropika];
-    C --> E[🏛️ PN Kendal];
-    C --> F[📅 2023-2025];
+    C --> E[🏛️ PN Tegal];
+    C --> F[📅 2023];
     D & E & F --> G[📦 Dataset Final];
     G --> H[📄 50 Dokumen PDF];
     G --> I[📊 Metadata Excel];
 ```
 
 </div>
-
----
 
 ## 📊 **Spesifikasi Metadata (`Overview.xlsx`)**
 
@@ -98,7 +88,7 @@ File `Overview.xlsx` berisi rangkuman dari setiap putusan untuk analisis cepat.
 <th>🏷️ Field</th>
 <th>📝 Deskripsi</th>
 <th>📄 Format</th>
-<th>📊 Contoh Data (dari No. 63/Pid.Sus/2024/PN Kdl)</th>
+<th>📊 Contoh Data</th>
 </tr>
 </thead>
 <tbody>
@@ -112,31 +102,29 @@ File `Overview.xlsx` berisi rangkuman dari setiap putusan untuk analisis cepat.
 <td><strong>No Putusan</strong></td>
 <td>Nomor identifikasi unik putusan</td>
 <td>String</td>
-<td>63/Pid.Sus/2024/PN Kdl</td>
+<td>101/Pid.Sus/2023/PN tgl</td>
 </tr>
 <tr>
 <td><strong>Lembaga Peradilan</strong></td>
 <td>Pengadilan yang memutus perkara</td>
 <td>String</td>
-<td>Pengadilan Negeri Kendal</td>
+<td>Pengadilan Negeri Tegal</td>
 </tr>
 <tr style="background-color: #f8f9fa;">
 <td><strong>Barang Bukti</strong></td>
 <td>Rincian barang bukti yang disita</td>
 <td>Text</td>
-<td>1 buah tas slempang berisi shabu 4,78 gram; 1 bungkus permen berisi 20 paket shabu (13,78 gram) dan 30 paket shabu (7,31 gram); 1 buah HP Redmi 13C; 1 unit motor Honda Beat...</td>
+<td>1 (satu) plastik klip berisi sabu dengan berat bersih 0,15741 gram; 1 (satu) unit handphone OPPOF9...</td>
 </tr>
 <tr>
 <td><strong>Amar Putusan</strong></td>
 <td>Ringkasan putusan akhir Majelis Hakim</td>
 <td>Long Text</td>
-<td>Menyatakan Terdakwa Adriyanto Bin Suwandi terbukti sah dan meyakinkan bersalah... Menjatuhkan pidana penjara 9 tahun dan denda Rp1.000.000.000,- subsidair 6 bulan penjara...</td>
+<td>Menyatakan Terdakwa MASHURI bin WAJUM terbukti... Menjatuhkan pidana penjara selama 1 (satu) tahun dan menjalani rehabilitasi...</td>
 </tr>
 </tbody>
 </table>
 </div>
-
----
 
 ## 🚀 **Potensi Aplikasi**
 
@@ -167,8 +155,6 @@ File `Overview.xlsx` berisi rangkuman dari setiap putusan untuk analisis cepat.
 </table>
 </div>
 
----
-
 ## 🛠️ **Metodologi Akuisisi**
 
 <div align="center">
@@ -181,21 +167,19 @@ File `Overview.xlsx` berisi rangkuman dari setiap putusan untuk analisis cepat.
 
 </div>
 
-> **Proses Kurasi**: Setiap dokumen dipilih melalui **seleksi manual berbasis kriteria** untuk memastikan kualitas, konsistensi, dan relevansi dengan fokus penelitian. Akuisisi data mematuhi ketentuan akses informasi publik yang berlaku.
+> **Proses Kurasi**: Setiap dokumen dalam dataset ini dikumpulkan melalui **akuisisi dan seleksi manual** untuk menjamin kualitas, konsistensi, dan relevansi dengan fokus penelitian. Proses ini mematuhi ketentuan akses informasi publik yang berlaku.
 
 <details>
 <summary><strong>🔍 Kriteria Seleksi Detail</strong></summary>
 
-- ✅ **Kategori**: Pidana Khusus (Narkotika & Psikotropika)
-- ✅ **Yurisdiksi**: Pengadilan Negeri Kendal  
-- ✅ **Periode**: Tahun 2023-2025
-- ✅ **Format**: Dokumen PDF lengkap
-- ✅ **Bahasa**: Bahasa Indonesia
-- ❌ **Eksklusi**: Tidak menggunakan putusan berstatus "Berkekuatan Hukum Tetap" jika terindikasi.
+  - ✅ **Kategori**: Pidana Khusus (Narkotika & Psikotropika)
+  - ✅ **Yurisdiksi**: Pengadilan Negeri Tegal  
+  - ✅ **Periode**: Tahun 2023-2025
+  - ✅ **Format**: Dokumen PDF lengkap
+  - ✅ **Bahasa**: Bahasa Indonesia
+  - ❌ **Eksklusi**: Tidak menggunakan putusan berstatus "Berkekuatan Hukum Tetap" jika terindikasi.
 
 </details>
-
----
 
 ## 👥 **Tim Peneliti**
 
@@ -218,13 +202,11 @@ File `Overview.xlsx` berisi rangkuman dari setiap putusan untuk analisis cepat.
 </table>
 </div>
 
----
-
 ## 📜 **Lisensi & Penggunaan**
 
 <div align="center">
 
-[![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg?style=for-the-badge&logo=creative-commons)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Creative Commons Attribution-ShareAlike 4.0 International**
 
@@ -232,15 +214,13 @@ File `Overview.xlsx` berisi rangkuman dari setiap putusan untuk analisis cepat.
 
 > **Kebebasan Penggunaan**: Dataset ini dapat digunakan untuk tujuan akademik, penelitian, dan komersial dengan syarat memberikan atribusi yang sesuai dan mendistribusikan turunannya dengan lisensi yang sama.
 
----
-
 <div align="center">
 
 ### 🤝 **Kontribusi & Feedback**
 
 *Dataset ini merupakan hasil karya akademik dalam mata kuliah **Temu Kembali Informasi**. Untuk saran, kritik, atau kolaborasi lebih lanjut, silakan hubungi tim peneliti.*
 
----
+-----
 
 <sub>⚖️ **Disclaimer**: Dataset ini disusun untuk tujuan akademik dan penelitian. Penggunaan untuk keperluan hukum praktis memerlukan verifikasi independen terhadap dokumen asli.</sub>
 
